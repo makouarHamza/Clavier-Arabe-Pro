@@ -1,0 +1,6 @@
+{
+  "name": "Clavier Arabe Pro - Smart Arabic Keyboard & Transliteration",
+  "description": "Ultra-fast online Arabic virtual keyboard with instant Yamli Arabizi transliteration, full Harakat diacritics, custom themes, and PSEO for high performance typing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

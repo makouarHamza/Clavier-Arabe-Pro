@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script>
+      // Defensive safeguard: Ensure window.fetch and Window.prototype.fetch have both getter and setter
+      (function() {
+        try {
+          var realFetch = window.fetch ? window.fetch.bind(window) : null;
+          var patchObject = function(target) {
+            if (!target) return;
+            try {
+              Object.defineProperty(target, 'fetch', {
+                get: function() {
+                  return realFetch;
+                },
+                set: function(fn) {
+                  realFetch = fn;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (err) {}
+          };
+
+          patchObject(window);
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            patchObject(Window.prototype);
+          }
+          if (typeof globalThis !== 'undefined') {
+            patchObject(globalThis);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>Clavier Arabe Pro – لوحة مفاتيح عربية ذكية وسريعة | Arabic Keyboard & Yamli Transliteration</title>
+    <meta name="description" content="أسرع لوحة مفاتيح عربية افتراضية للكتابة بالعربية وحروف العربيزي Yamli بدون تأخير. كيبورد عربي مع التشكيل، ثيمات مخصصة، والبحث السريع في جوجل ويوتيوب." />
+    <meta name="keywords" content="clavier arabe, لوحة مفاتيح عربية, كيبورد عربي, yamli, arabic keyboard, transliteration arabizi, كتابة بالعربي, تشكيل الحركات, clavier arabe virtuel" />
+    
+    <!-- OpenGraph Social Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Clavier Arabe Pro – لوحة مفاتيح عربية ذكية وسريعة" />
+    <meta property="og:description" content="أسرع لوحة مفاتيح عربية افتراضية للكتابة بالعربية وحروف العربيزي Yamli بدون تأخير. كيبورد عربي مع التشكيل والحركات وثيمات متعددة." />
+    <meta property="og:site_name" content="Clavier Arabe Pro" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&h=630&q=80" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Clavier Arabe Pro – لوحة مفاتيح عربية ذكية" />
+    <meta name="twitter:description" content="أسرع كيبورد عربي للكتابة بالفرانكو/عربيزي وتشكيل الحركات والبحث المباشر." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&h=630&q=80" />
+    
+    <!-- Google Fonts for Arabic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org JSON-LD structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Clavier Arabe Pro",
+      "alternateName": ["لوحة مفاتيح عربية", "Clavier Arabe Intelligent", "Yamli Arabic Keyboard"],
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Smart, low-latency virtual Arabic keyboard with Franco-Arab/Yamli transliteration engine, Harakat diacritics, and multi-theme customization.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Instant Zero-Latency Arabic Typing",
+        "Yamli Franco-Arab / Arabizi Transliteration",
+        "Full Arabic Tashkeel / Harakat Bar",
+        "One-Click Search on Google, YouTube, Yahoo, Images",
+        "Custom Themes including Retro Windows 98 / Yamli Clavier",
+        "Audio Typing Click Feedback",
+        "Speech-to-Text Arabic Dictation and Text-to-Speech Pronunciation",
+        "Export to TXT, Word, Print, WhatsApp & Social Sharing"
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-slate-100 text-slate-900 antialiased selection:bg-amber-200 selection:text-amber-900">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
